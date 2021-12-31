@@ -116,5 +116,8 @@ data class UITeam(
                 R.color.wiRapidsTertiary
             )
         )
+
+        @JvmStatic
+        fun fromTeamId(teamId: String?) = allTeams.firstOrNull { uiTeam -> uiTeam.teamId == teamId }
     }
 }
