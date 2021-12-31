@@ -3,11 +3,21 @@
     package="com.robertogianassi.abl">
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_abl_launcher"
+        android:label="@string/app_short_name"
+        android:roundIcon="@mipmap/ic_abl_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Abl" />
+        android:theme="@style/Theme.AndroidBaseballLeague">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>
