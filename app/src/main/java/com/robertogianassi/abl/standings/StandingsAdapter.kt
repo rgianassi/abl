@@ -1,17 +1,19 @@
 package com.robertogianassi.abl.standings
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.robertogianassi.abl.NavGraphDirections
 import com.robertogianassi.abl.databinding.StandingsHeaderBinding
 import com.robertogianassi.abl.databinding.StandingsTeamItemBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.ClassCastException
 
 class StandingsAdapter :
     ListAdapter<StandingsListItem, RecyclerView.ViewHolder>(StandingsDiffCallback()) {
@@ -24,7 +26,7 @@ class StandingsAdapter :
             .groupBy { it.teamStanding.division }
             .map { (division, teams) ->
                 listOf(StandingsListItem.Header(division)) +
-                    teams.map { team -> StandingsListItem.TeamItem(team) }
+                        teams.map { team -> StandingsListItem.TeamItem(team) }
             }.flatten()
 
         withContext(Dispatchers.Main) {
@@ -63,16 +65,16 @@ class StandingsAdapter :
 
     class StandingsListTeamViewHolder(private val binding: StandingsTeamItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(standingsTeamItem: StandingsListItem.TeamItem) {
             binding.uiTeamStanding = standingsTeamItem.uiTeamStanding
-            //TODO: Uncomment this code when you're ready.
-            /*binding.clickListener = View.OnClickListener { view ->
+            binding.clickListener = View.OnClickListener { view ->
                 val action = NavGraphDirections.actionGoToTeam(
                     standingsTeamItem.uiTeamStanding.teamId,
                     standingsTeamItem.uiTeamStanding.teamName
                 )
                 view.findNavController().navigate(action)
-            }*/
+            }
         }
 
         companion object {
