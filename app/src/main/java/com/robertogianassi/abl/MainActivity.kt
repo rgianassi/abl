@@ -1,7 +1,7 @@
 package com.robertogianassi.abl
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.robertogianassi.abl.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -24,14 +25,16 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.containerFragment) as NavHostFragment
-        navController = navHostFragment.navController
+        this.navController = navHostFragment.navController
 
-        binding.navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(this.navController)
 
-        appBarConfiguration = AppBarConfiguration(binding.navView.menu, binding.drawerLayout)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        this.appBarConfiguration = AppBarConfiguration(binding.navView.menu, binding.drawerLayout)
+        setupActionBarWithNavController(this.navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean =
-        (this::navController.isInitialized && navController.navigateUp(appBarConfiguration)) || super.onSupportNavigateUp()
+        (this::navController.isInitialized &&
+            this.navController.navigateUp(this.appBarConfiguration)
+        ) || super.onSupportNavigateUp()
 }

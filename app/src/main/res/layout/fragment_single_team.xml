@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ ! Excerpted from "Kotlin and Android Development featuring Jetpack",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/mfjetpack for more book information.
+-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="androidx.core.content.ContextCompat" />
 
         <variable
@@ -13,7 +20,7 @@
 
         <variable
             name="viewRosterButtonClickListener"
-            type="android.view.View.OnClickListener" />
+            type="android.view.View.OnClickListener"  />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,14 +43,14 @@
             android:id="@+id/teamRecord"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{vm.teamStanding.winLossText}"
-            android:textAlignment="center"
             android:textSize="24sp"
+            android:textAlignment="center"
+            android:text="@{vm.teamStanding.winLossText}"
             app:layout_constraintBottom_toBottomOf="@id/teamDivisionStandings"
             app:layout_constraintEnd_toEndOf="@id/teamLogo"
             app:layout_constraintStart_toStartOf="@id/teamLogo"
             app:layout_constraintTop_toTopOf="@id/teamABLStandings"
-            tools:text="104-50" />
+            tools:text="104-50"/>
 
         <TextView
             android:id="@+id/teamLocation"
@@ -74,9 +81,9 @@
             android:id="@+id/teamABLStandings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text='@{"#" + vm.teamStanding.placeInLeague + " " + @string/in_abl}'
             android:textAlignment="center"
             android:textSize="20sp"
+            android:text='@{"#" + vm.teamStanding.placeInLeague + " " + @string/in_abl}'
             app:layout_constraintEnd_toEndOf="@id/teamName"
             app:layout_constraintStart_toStartOf="@id/teamName"
             app:layout_constraintTop_toBottomOf="@id/teamName"
@@ -86,9 +93,9 @@
             android:id="@+id/teamDivisionStandings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text='@{"#" + vm.teamStanding.placeInDivision + " " + @string/in_abl + " " + vm.team.division}'
             android:textAlignment="center"
             android:textSize="16sp"
+            android:text='@{"#" + vm.teamStanding.placeInDivision + " " + @string/in_abl + " " + vm.team.division}'
             app:layout_constraintEnd_toEndOf="@id/teamName"
             app:layout_constraintStart_toStartOf="@id/teamName"
             app:layout_constraintTop_toBottomOf="@id/teamABLStandings"
@@ -99,13 +106,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:text="@string/view_roster"
             android:backgroundTint="@{vm.team.primaryColorId}"
             android:onClick="@{viewRosterButtonClickListener}"
-            android:text="@string/view_roster"
             app:icon="@drawable/ic_baseline_directions_run_24"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/teamDivisionStandings" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teamDivisionStandings"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.robertogianassi.abl.R
+import com.robertogianassi.abl.databinding.FragmentStandingsBinding
 
 class StandingsFragment : Fragment() {
 
@@ -17,18 +19,30 @@ class StandingsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_standings, container, false)
+        val binding = FragmentStandingsBinding.inflate(inflater)
 
         val standingsAdapter = StandingsAdapter()
 
-        if (view is RecyclerView) {
-            view.adapter = standingsAdapter
+        binding.standingsList.adapter = standingsAdapter
+
+        binding.standingsSwipeRefreshLayout.setOnRefreshListener {
+            standingsViewModel.refreshStandings()
         }
 
         standingsViewModel.standings.observe(viewLifecycleOwner) { standings ->
             standingsAdapter.addHeadersAndBuildStandings(standings)
+            binding.standingsSwipeRefreshLayout.isRefreshing = false
         }
 
-        return view
+        standingsViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            if (!errorMessage.isNullOrEmpty()) {
+                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show()
+            }
+            binding.standingsSwipeRefreshLayout.isRefreshing = false
+        }
+
+        standingsViewModel.refreshStandings()
+
+        return binding.root
     }
 }

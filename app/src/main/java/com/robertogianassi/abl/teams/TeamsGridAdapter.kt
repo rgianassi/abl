@@ -9,9 +9,8 @@ import com.robertogianassi.abl.NavGraphDirections
 import com.robertogianassi.abl.R
 import com.robertogianassi.abl.databinding.TeamsGridItemBinding
 
-class TeamsGridAdapter(
-    private val teams: List<UITeam>
-) : RecyclerView.Adapter<TeamsGridAdapter.TeamViewHolder>() {
+class TeamsGridAdapter(private val teams: List<UITeam>) :
+    RecyclerView.Adapter<TeamsGridAdapter.TeamViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,18 +25,14 @@ class TeamsGridAdapter(
             )
         )
 
-    override fun onBindViewHolder(
-        holder: TeamViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: TeamViewHolder, position: Int) {
         holder.bind(teams[position])
     }
 
     override fun getItemCount(): Int = teams.size
 
-    inner class TeamViewHolder(
-        private val binding: TeamsGridItemBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+    inner class TeamViewHolder(private val binding: TeamsGridItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: UITeam) {
             binding.apply {

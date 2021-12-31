@@ -14,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.ClassCastException
 
 class StandingsAdapter :
     ListAdapter<StandingsListItem, RecyclerView.ViewHolder>(StandingsDiffCallback()) {
@@ -26,7 +27,7 @@ class StandingsAdapter :
             .groupBy { it.teamStanding.division }
             .map { (division, teams) ->
                 listOf(StandingsListItem.Header(division)) +
-                        teams.map { team -> StandingsListItem.TeamItem(team) }
+                    teams.map { team -> StandingsListItem.TeamItem(team) }
             }.flatten()
 
         withContext(Dispatchers.Main) {
@@ -65,7 +66,6 @@ class StandingsAdapter :
 
     class StandingsListTeamViewHolder(private val binding: StandingsTeamItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(standingsTeamItem: StandingsListItem.TeamItem) {
             binding.uiTeamStanding = standingsTeamItem.uiTeamStanding
             binding.clickListener = View.OnClickListener { view ->

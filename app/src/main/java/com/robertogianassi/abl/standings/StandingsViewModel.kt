@@ -1,16 +1,43 @@
 package com.robertogianassi.abl.standings
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.robertogianassi.abl.data.BaseballDatabase
+import com.robertogianassi.abl.data.BaseballRepository
+import com.robertogianassi.abl.util.getErrorMessage
+import kotlinx.coroutines.launch
 
-class StandingsViewModel: ViewModel() {
-    val standings: LiveData<List<UITeamStanding>> = MutableLiveData(
-        TeamStanding.mockTeamStandings.mapNotNull { teamStanding ->
-            UITeamStanding.fromTeamIdAndStandings(
-                teamStanding.teamId,
-                TeamStanding.mockTeamStandings
-            )
+class StandingsViewModel(application: Application) :
+    AndroidViewModel(application) {
+
+    private val repo: BaseballRepository
+
+    val standings: LiveData<List<UITeamStanding>>
+    val errorMessage = MutableLiveData("")
+
+    init {
+        repo = BaseballDatabase
+            .getDatabase(application, viewModelScope)
+            .baseballDao()
+            .let { dao ->
+                BaseballRepository.getInstance(dao)
+            }
+
+        standings =
+            Transformations.map(repo.getStandings()) { teamStandings ->
+                teamStandings.mapNotNull { teamStanding ->
+                    UITeamStanding.fromTeamIdAndStandings(
+                        teamStanding.teamId,
+                        teamStandings
+                    )
+                }
+            }
+    }
+
+    fun refreshStandings() {
+        viewModelScope.launch {
+            repo.updateStandings().getErrorMessage(getApplication())
+                ?.let { message -> errorMessage.value = message }
         }
-    )
+    }
 }

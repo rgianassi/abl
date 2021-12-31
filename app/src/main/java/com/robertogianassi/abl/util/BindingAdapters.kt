@@ -12,5 +12,7 @@ fun setImageViewResource(imageView: ImageView, resourceId: Int) {
 
 @BindingAdapter("android:backgroundTint")
 fun setBackgroundTint(view: View, colorId: Int) {
-    view.background.setTintList(ContextCompat.getColorStateList(view.context, colorId))
+    view.background.setTintList(
+        ContextCompat.getColorStateList(view.context, colorId)
+    )
 }

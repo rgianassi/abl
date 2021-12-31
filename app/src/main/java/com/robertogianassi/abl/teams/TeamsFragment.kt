@@ -10,24 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.robertogianassi.abl.R
 
 class TeamsFragment : Fragment() {
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_teams_grid, container, false)
+
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = GridLayoutManager(
-                    context,
-                    2, // Span Count (columns)
-                    GridLayoutManager.VERTICAL,
-                    false, // Reverse layout
-                )
+                layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
                 adapter = TeamsGridAdapter(UITeam.allTeams)
             }
         }
+
         return view
     }
 }

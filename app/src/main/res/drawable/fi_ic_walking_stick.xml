@@ -1,3 +1,11 @@
+<!--
+ ! Excerpted from "Kotlin and Android Development featuring Jetpack",
+ ! published by The Pragmatic Bookshelf.
+ ! Copyrights apply to this code. It may not be used to create training material,
+ ! courses, books, articles, and the like. Contact us if you are in doubt.
+ ! We make no guarantees that this code is fit for any purpose.
+ ! Visit http://www.pragmaticprogrammer.com/titles/mfjetpack for more book information.
+-->
 <vector android:height="200dp" android:viewportHeight="509.628"
     android:viewportWidth="509.628" android:width="200dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="#ab7b64" android:pathData="m191.421,116.595 l-7.86,-36.158c-1.109,-5.101 -3.726,-9.752 -7.511,-13.348l-23.038,-21.886c-5.796,-5.507 -8.121,-13.74 -6.061,-21.465 4.255,-15.957 23.997,-21.603 36.046,-10.307l5.746,5.387c5.266,4.937 12.632,6.954 19.678,5.388l63.056,-14.012c21.964,-4.881 44.959,0.333 62.67,14.209l2.947,2.309c19.328,15.143 29.104,39.45 25.643,63.759 -1.222,8.579 -7.841,15.603 -16.428,16.764 -0.364,0.049 -0.73,0.089 -1.098,0.118 -11.027,0.882 -20.705,-7.288 -21.685,-18.307l-0.795,-8.942c-0.868,-9.753 -6.678,-18.378 -15.391,-22.846 -6.939,-3.558 -15.032,-4.12 -22.396,-1.554l-33.975,11.84c-12.255,4.271 -21.011,15.142 -22.573,28.026l-2.549,21.026h-34.426z"/>
