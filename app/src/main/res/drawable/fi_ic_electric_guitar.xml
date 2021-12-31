@@ -1,11 +1,3 @@
-<!--
- ! Excerpted from "Kotlin and Android Development featuring Jetpack",
- ! published by The Pragmatic Bookshelf.
- ! Copyrights apply to this code. It may not be used to create training material,
- ! courses, books, articles, and the like. Contact us if you are in doubt.
- ! We make no guarantees that this code is fit for any purpose.
- ! Visit http://www.pragmaticprogrammer.com/titles/mfjetpack for more book information.
--->
 <vector android:height="200dp" android:viewportHeight="512.001"
     android:viewportWidth="512.001" android:width="200dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="#420183" android:pathData="M143.312,238.176c-39.557,39.509 -69.895,17.645 -107.514,55.088c-43.867,43.661 -34.891,119.915 14.203,168.78c50.752,50.514 126.656,56.855 169.549,14.162c37.506,-37.331 15.728,-67.12 55.532,-106.818c7.133,-7.114 53.303,-23.324 77.508,-55.321c58.719,-77.621 -140.247,36.974 -55.173,-97.058C200.478,120.189 158.763,222.744 143.312,238.176z"/>
